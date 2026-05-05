@@ -1884,26 +1884,6 @@ if (typeof Lenis !== 'undefined') {
 
   /* Initial position */
   updateTarget();
-
-  /* =========================================================
-     APPLE-STYLE SMOOTH SCROLL
-     Lenis drives momentum. Canvas chases scroll via LERP.
-     Nudge cleanly out of hero once fully past the last chapter.
-  ========================================================= */
-  var edgeTimer = null;
-  function scheduleEdgeSnap() {
-    if (edgeTimer) clearTimeout(edgeTimer);
-    edgeTimer = setTimeout(function () {
-      var scrollTop = window.scrollY || window.pageYOffset;
-      var maxH = wrapper.offsetHeight - window.innerHeight;
-      if (maxH <= 0) return;
-      if ((scrollTop / maxH) > 0.97 && lenis && typeof lenis.scrollTo === 'function') {
-        lenis.scrollTo(maxH + 2, { duration: 0.7 });
-      }
-    }, 260);
-  }
-  if (lenis) lenis.on('scroll', scheduleEdgeSnap);
-  window.addEventListener('scroll', scheduleEdgeSnap, { passive: true });
 })();
 
 /* =========================================================
