@@ -14,13 +14,20 @@
 
   <style>
   /* =============================================================
-     LENIS SMOOTH SCROLL — required CSS
+     GLOBAL RESET
   ============================================================= */
-  html.lenis, html.lenis body { height: auto; }
-  .lenis.lenis-smooth { scroll-behavior: auto !important; }
-  .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-  .lenis.lenis-stopped { overflow: clip; }
-  .lenis.lenis-smooth iframe { pointer-events: none; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a1b31; color: #fff; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+  ul { list-style: none; }
+  img { max-width: 100%; height: auto; display: block; }
+  button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5vw;
+  }
   
   /* =============================================================
      REVEAL ANIMATIONS
@@ -61,6 +68,122 @@
   .delay-1 { transition-delay: 0.15s; }
   .delay-2 { transition-delay: 0.3s; }
   .delay-3 { transition-delay: 0.45s; }
+
+  /* =============================================================
+     NAVBAR & MOBILE MENU
+  ============================================================= */
+  .navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 32px 0;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .navbar.scrolled {
+    padding: 18px 0;
+    background: rgba(10,27,49,0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw; max-width: 1600px; margin: 0 auto;
+  }
+  .nav-links { display: flex; gap: 48px; align-items: center; }
+  .nav-link {
+    color: #fff; font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase;
+    opacity: 0.8;
+  }
+  .nav-link:hover { opacity: 1; color: var(--gold); }
+
+  .nav-actions { display: flex; align-items: center; gap: 24px; }
+  .nav-cta {
+    background: var(--gold); color: var(--ink);
+    padding: 14px 28px; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    transition: all 0.4s;
+  }
+  .nav-cta:hover { background: #fff; transform: translateY(-2px); }
+
+  .hamburger {
+    display: none; flex-direction: column; gap: 7px; cursor: pointer; z-index: 1100;
+  }
+  .hamburger span {
+    width: 30px; height: 1.5px; background: #fff; transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
+
+  .mobile-menu {
+    position: fixed; inset: 0; background: #0a1b31; z-index: 1050;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 32px; opacity: 0; visibility: hidden;
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .mobile-menu.open { opacity: 1; visibility: visible; }
+  .mobile-menu .nav-link { font-size: 1.2rem; letter-spacing: 5px; }
+
+  @media (max-width: 1024px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+
+  /* =============================================================
+     FOOTER ADDITIONAL STYLES
+  ============================================================= */
+  .footer-grid {
+    display: grid; grid-template-columns: 1.8fr 1fr 1fr 1.2fr; gap: 60px;
+    padding-bottom: 80px; border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .footer-brand p { color: rgba(255,255,255,0.5); font-size: 0.95rem; line-height: 1.8; margin-bottom: 32px; }
+  .footer-links { display: flex; flex-direction: column; gap: 16px; }
+  .footer-links a { color: rgba(255,255,255,0.6); font-size: 0.9rem; transition: 0.3s; }
+  .footer-links a:hover { color: var(--gold); padding-left: 6px; }
+
+  .footer-contact-item { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; color: rgba(255,255,255,0.7); font-size: 0.9rem; }
+  .fc-icon { color: var(--gold); font-size: 1.1rem; flex-shrink: 0; }
+  
+  .footer-whatsapp {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: rgba(245,176,23,0.1); border: 1px solid rgba(245,176,23,0.2);
+    padding: 14px 24px; color: var(--gold); font-size: 0.85rem; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase; margin-top: 12px;
+  }
+  .footer-whatsapp:hover { background: var(--gold); color: var(--ink); }
+
+  .footer-bottom { padding: 40px 0; display: flex; justify-content: center; color: rgba(255,255,255,0.3); font-size: 0.75rem; letter-spacing: 2px; }
+
+  .social-links { display: flex; gap: 12px; }
+  .social-link {
+    width: 42px; height: 42px; border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1rem;
+  }
+  .social-link:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+
+  /* WhatsApp Float */
+  .whatsapp-float {
+    position: fixed; bottom: 40px; right: 40px; z-index: 999;
+    width: 64px; height: 64px; background: #25D366; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 15px 40px rgba(37,211,102,0.3); transition: 0.4s;
+  }
+  .whatsapp-float:hover { transform: scale(1.1) translateY(-5px); }
+  .wa-tooltip {
+    position: absolute; right: 80px; background: #fff; color: #000;
+    padding: 8px 16px; border-radius: 4px; font-size: 0.75rem; font-weight: 600;
+    white-space: nowrap; opacity: 0; transform: translateX(10px); transition: 0.3s;
+  }
+  .whatsapp-float:hover .wa-tooltip { opacity: 1; transform: translateX(0); }
+
+  @media (max-width: 768px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 48px; }
+    .footer { padding-top: 60px; }
+    .whatsapp-float { bottom: 24px; right: 24px; width: 56px; height: 56px; }
+  }
+
+  /* =============================================================
 
   /* =============================================================
      LUXURY EDITORIAL OVERRIDES
