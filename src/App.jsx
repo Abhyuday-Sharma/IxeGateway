@@ -17,6 +17,17 @@ import FloatingWhatsApp from './components/FloatingWhatsApp';
 import CustomCursor from './components/CustomCursor';
 
 function App() {
+  React.useEffect(() => {
+    const handlePlaceholderClick = (e) => {
+      const target = e.target.closest('a');
+      if (target && target.getAttribute('href') === '#') {
+        e.preventDefault();
+      }
+    };
+    window.addEventListener('click', handlePlaceholderClick);
+    return () => window.removeEventListener('click', handlePlaceholderClick);
+  }, []);
+
   return (
     <div style={{ backgroundColor: 'var(--navy-900)' }}>
       <CustomCursor />

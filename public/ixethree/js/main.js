@@ -268,7 +268,10 @@ function initTiltCards() {
 document.querySelectorAll('a[href^="#"]').forEach(function (a) {
   a.addEventListener('click', function (e) {
     const href = a.getAttribute('href');
-    if (href === '#') return; // let plain # links be (e.g. placeholder social icons)
+    if (href === '#') {
+      e.preventDefault();
+      return; 
+    }
     const target = document.querySelector(href);
     if (target) {
       e.preventDefault();
