@@ -17,7 +17,8 @@ export default function Globe() {
       0.1,
       1000
     );
-    camera.position.set(0, 0.2, 4.75);
+    const isMobile = window.innerWidth <= 768;
+    camera.position.set(0, 0.2, isMobile ? 5.8 : 4.75);
 
     const renderer = new THREE.WebGLRenderer({
       antialias: true,

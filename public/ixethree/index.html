@@ -1282,6 +1282,7 @@
     #scene-1 .hs-eyebrow, #scene-2 .hs-eyebrow, #scene-3 .hs-eyebrow { justify-content: flex-start; }
     #scene-1 .hs-eyebrow::before, #scene-3 .hs-eyebrow::before { order: 0; }
     #scene-1 .hs-actions, #scene-2 .hs-actions, #scene-3 .hs-actions { justify-content: flex-start; }
+    .d-hide-mobile { display: none !important; }
   }
   </style>
 </head>
@@ -1300,7 +1301,7 @@
       <li><a href="../enquiry.html"  class="nav-link">Contact</a></li>
     </ul>
     <div class="nav-actions">
-      <a href="../enquiry.html" class="nav-cta">Get Quote</a>
+      <a href="../enquiry.html" class="nav-cta d-hide-mobile">Get Quote</a>
       <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
     </div>
   </div>
@@ -1792,6 +1793,12 @@ if (typeof Lenis !== 'undefined') {
     requestAnimationFrame(raf);
   }
   requestAnimationFrame(raf);
+
+  /* Adjust scroll height for mobile devices to keep pacing snappy */
+  if (window.innerWidth <= 768) {
+    var wrapper = document.getElementById('hero-wrapper');
+    if (wrapper) wrapper.style.height = '800vh';
+  }
 }
 
 /* =========================================================

@@ -161,6 +161,15 @@ ul {
 
 @media (max-width: 768px) {
 
+  /* Critical constraint to prevent GSAP overlapping and screen tearing on mobile swipe */
+  body,
+  html {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .grid-2,
   .grid-3,
   .grid-4 {
@@ -173,37 +182,31 @@ ul {
   }
 
   h1 {
-    font-size: 2.2rem !important;
+    font-size: clamp(2.2rem, 8vw, 3rem) !important;
   }
 
   h2 {
-    font-size: 1.8rem !important;
-  }
-
-  h3 {
-    font-size: 1.5rem !important;
-  }
-
-  h4 {
-    font-size: 1.2rem !important;
+    font-size: clamp(1.8rem, 6vw, 2.5rem) !important;
   }
 
   .container {
-    padding: 0 1.2rem;
-  }
-
-  /* Critical constraint to prevent GSAP overlapping and screen tearing on mobile swipe */
-  body,
-  html {
-    overflow-x: hidden;
-    width: 100%;
-    overscroll-behavior-y: none;
+    padding: 0 1.5rem;
   }
 
   .btn-primary,
   .btn-outline {
     width: 100%;
     text-align: center;
-    padding: 0.8rem 1.5rem;
+    padding: 0.9rem 1.5rem;
+  }
+}
+
+/* Intermediate Tablet Breakpoint */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .grid-3, .grid-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .container {
+    padding: 0 3rem;
   }
 }

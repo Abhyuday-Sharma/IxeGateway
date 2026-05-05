@@ -77,6 +77,19 @@ const WhyUsSection = () => {
 
   return (
     <section id="why-us" ref={sectionRef} className="section-padding" style={{ backgroundColor: 'var(--white)', color: 'var(--navy-900)' }}>
+      <style>{`
+        @media(max-width: 992px) {
+          .grid-2 {
+            grid-template-columns: 1fr !important;
+            gap: 2.5rem !important;
+          }
+        }
+        @media(max-width: 480px) {
+          .factor-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
       <div className="container">
 
         <div ref={el => textRef.current[0] = el} style={{ textAlign: 'center', marginBottom: '4rem' }}>

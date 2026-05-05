@@ -78,8 +78,8 @@ const Chatbot = () => {
           position: 'fixed',
           bottom: '30px',
           right: '30px',
-          width: '60px',
-          height: '60px',
+          width: window.innerWidth <= 768 ? '50px' : '60px',
+          height: window.innerWidth <= 768 ? '50px' : '60px',
           borderRadius: '50%',
           backgroundColor: 'var(--gold-500)',
           color: 'var(--navy-900)',
@@ -96,17 +96,17 @@ const Chatbot = () => {
         onMouseEnter={(e) => { if(!isOpen) e.currentTarget.style.transform = 'scale(1.1)'; }}
         onMouseLeave={(e) => { if(!isOpen) e.currentTarget.style.transform = 'scale(1)'; }}
       >
-        {isOpen ? <X size={28} /> : <MessageSquareText size={28} />}
+        {isOpen ? <X size={window.innerWidth <= 768 ? 24 : 28} /> : <MessageSquareText size={window.innerWidth <= 768 ? 24 : 28} />}
       </button>
 
       {/* Chat Window */}
       {isOpen && (
         <div id="chatbot-window" style={{
           position: 'fixed',
-          bottom: '100px',
-          right: '30px',
-          width: '380px',
-          height: '600px',
+          bottom: window.innerWidth <= 768 ? '90px' : '100px',
+          right: window.innerWidth <= 768 ? '15px' : '30px',
+          width: window.innerWidth <= 768 ? 'calc(100vw - 30px)' : '380px',
+          height: window.innerWidth <= 768 ? 'calc(100dvh - 120px)' : '600px',
           backgroundColor: 'white',
           borderRadius: '24px',
           boxShadow: '0 20px 50px rgba(0,0,0,0.15)',

@@ -59,6 +59,14 @@ const Footer = () => {
             grid-column: span 2;
           }
         }
+        @media(max-width: 480px) {
+          footer .grid-4 {
+            grid-template-columns: 1fr !important;
+          }
+          footer .grid-4 > div:first-child {
+            grid-column: span 1 !important;
+          }
+        }
       `}</style>
     </footer>
   );

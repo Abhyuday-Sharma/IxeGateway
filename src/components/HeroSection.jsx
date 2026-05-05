@@ -147,13 +147,29 @@ const HeroSection = () => {
           .hero-stats {
             justify-content: center;
             gap: 2rem !important;
+            margin-top: 3rem !important;
           }
           .hero-globe {
-            height: 350px !important;
+            height: 300px !important;
             order: 2;
+            margin-bottom: 2rem;
           }
           .scroll-indicator {
             display: none !important;
+          }
+        }
+        @media(max-width: 480px) {
+          .hero-stats {
+            flex-direction: column;
+            gap: 1.5rem !important;
+            border-top: none !important;
+            padding-top: 0 !important;
+          }
+          .hero-stats > div {
+            padding: 1rem;
+            background: rgba(255,255,255,0.03);
+            width: 100%;
+            border-radius: 12px;
           }
         }
       `}</style>

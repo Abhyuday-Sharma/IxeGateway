@@ -126,6 +126,7 @@ const Navbar = () => {
         @media(max-width: 768px) {
           .desktop-nav { display: none !important; }
           .mobile-toggle { display: block !important; }
+          nav img { height: 50px !important; }
         }
       `}</style>
     </nav>
