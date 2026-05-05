@@ -22,6 +22,7 @@ const PlaneTransition = () => {
   const planeRef = useRef(null);
   const textRef = useRef(null);
   const cloudsRef = useRef(null);
+  const scrollCueRef = useRef(null);
 
   useEffect(() => {
     let mm = gsap.matchMedia();
@@ -36,7 +37,7 @@ const PlaneTransition = () => {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=150%", 
+          end: "+=70%", 
           scrub: isMobile ? 2 : 1, // Smoother on mobile touch
           pin: true,
         }
@@ -45,6 +46,9 @@ const PlaneTransition = () => {
       // Cloud Parallax
       tl.to(cloudsRef.current.children, { x: '10vw', duration: 0.8 }, 0);
       tl.to(cloudsRef.current.children, { y: '-40vh', opacity: 0, duration: 0.2, stagger: 0.05 }, 0.8);
+
+      // Scroll cue fades out
+      tl.to(scrollCueRef.current, { opacity: 0, y: 20, duration: 0.15 }, 0);
 
       // Plane Animation - Adjusted scale/path for mobile
       tl.fromTo(planeRef.current, 
@@ -63,11 +67,11 @@ const PlaneTransition = () => {
       0);
 
       // Text animations
-      tl.fromTo(textRef.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.3 }, 0.2);
-      tl.to(textRef.current, { opacity: 0, y: -80, duration: 0.2 }, 0.6);
+      tl.fromTo(textRef.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.3 }, 0.1);
+      tl.to(textRef.current, { opacity: 0, y: -80, duration: 0.2 }, 0.5);
 
-      // Dissolve background
-      tl.to(bgRef.current, { opacity: 0, duration: 0.4, ease: 'none' }, 0.6);
+      // Dissolve background (Color Change)
+      tl.to(bgRef.current, { opacity: 0, duration: 0.4, ease: 'none' }, 0.3);
     });
 
     return () => mm.revert();
@@ -98,7 +102,36 @@ const PlaneTransition = () => {
           <img src="/planecargo.png" alt="Cargo Plane" style={{ width: '100%', height: '100%', objectFit: 'contain', filter: 'drop-shadow(0 15px 25px rgba(0,0,0,0.5))' }} />
         </div>
 
+        {/* Scroll Cue */}
+        <div 
+          ref={scrollCueRef}
+          style={{ 
+            position: 'absolute', 
+            bottom: '5%', 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center', 
+            gap: '0.4rem',
+            zIndex: 20,
+            pointerEvents: 'none',
+            color: 'var(--gold-500)',
+            transition: 'all 0.3s'
+          }}
+        >
+          <span style={{ fontSize: '0.85rem', fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase' }}>
+            Keep Scrolling
+          </span>
+          <div style={{ width: '2px', height: '35px', background: 'linear-gradient(to bottom, var(--gold-500), transparent)', animation: 'scrollDownLinePlane 1.5s infinite ease-in-out' }} />
+        </div>
+
       </div>
+
+      <style>{`
+        @keyframes scrollDownLinePlane {
+          0% { transform: translateY(0); opacity: 1; }
+          100% { transform: translateY(14px); opacity: 0; }
+        }
+      `}</style>
     </div>
   );
 };

@@ -7,7 +7,7 @@ const Footer = () => {
         
         {/* Brand */}
         <div style={{ gridColumn: 'span 1' }}>
-          <img src="/ixelogomain.png" alt="IXE Gateway" style={{ height: '80px', marginBottom: '1.5rem', objectFit: 'contain' }} />
+          <img src="/ixelogomain.png" alt="IXE Gateway" style={{ height: '120px', marginBottom: '1.5rem', objectFit: 'contain' }} />
           <p style={{ color: 'var(--gray-400)', fontSize: '0.9rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
             A dependable global sourcing partner, providing consistent quality and seamless trade solutions to businesses worldwide.
           </p>
@@ -47,7 +47,7 @@ const Footer = () => {
       </div>
 
       <div className="container" style={{ textAlign: 'center', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.1)', color: 'var(--gray-400)', fontSize: '0.85rem' }}>
-        <p>&copy; {new Date().getFullYear()} IXE Gateway Pvt Ltd. All Rights Reserved.</p>
+        <p>&copy; {new Date().getFullYear()} IXE Gateway Pvt. Ltd. All Rights Reserved.</p>
       </div>
 
       <style>{`

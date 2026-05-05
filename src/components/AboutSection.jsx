@@ -53,16 +53,16 @@ const AboutSection = () => {
             <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 3rem)', marginBottom: '2rem', color: 'var(--navy-900)' }}>
               Globally Oriented Trading Company
             </h2>
-            <p style={{ fontSize: '1.1rem', color: 'var(--gray-800)', marginBottom: '1.5rem', lineHeight: '1.8' }}>
-              IXE Gateway Pvt Ltd is engaged in sourcing, supplying, and exporting products from India to international markets. We collaborate with established supplier networks and processing units to ensure every product meets required quality standards.
+            <p style={{ fontSize: '1.1rem', color: 'var(--gray-800)', marginBottom: '1.5rem', lineHeight: '1.8', textAlign: 'justify' }}>
+              IXE Gateway Pvt. Ltd. is engaged in sourcing, supplying, and exporting products from India to international markets. We collaborate with established supplier networks and processing units to ensure every product meets required quality standards.
             </p>
-            <p style={{ fontSize: '1.1rem', color: 'var(--gray-800)', marginBottom: '2rem', lineHeight: '1.8' }}>
+            <p style={{ fontSize: '1.1rem', color: 'var(--gray-800)', marginBottom: '2rem', lineHeight: '1.8', textAlign: 'justify' }}>
               Our strength lies in our ability to manage sourcing, quality control, and logistics in a streamlined and reliable manner.
             </p>
             
             <div style={{ borderLeft: '4px solid var(--gold-500)', paddingLeft: '1.5rem', marginTop: '2rem' }}>
               <h4 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--navy-800)' }}>Our Business Approach</h4>
-              <p style={{ color: 'var(--gray-800)', fontSize: '1rem' }}>
+              <p style={{ color: 'var(--gray-800)', fontSize: '1rem', fontStyle: 'italic' }}>
                 We operate with a flexible and client-focused model. While we currently specialize in Makhana (Fox Nuts), our sourcing capabilities extend beyond a single category, easily adapting to evolving market demands.
               </p>
             </div>

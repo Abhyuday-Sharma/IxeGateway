@@ -36,7 +36,7 @@ const CommitmentSection = () => {
               Our <span style={{ color: 'var(--gold-500)' }}>Commitment</span>
             </h2>
             <p style={{ fontSize: '1.2rem', color: 'var(--gray-800)', marginBottom: '1.5rem', lineHeight: '1.8' }}>
-              At IXE Gateway Pvt Ltd, we are committed to delivering more than just products – we deliver reliable trade solutions. 
+              At IXE Gateway Pvt. Ltd., we are committed to delivering more than just products – we deliver reliable trade solutions. 
             </p>
             <p style={{ fontSize: '1.2rem', color: 'var(--gray-800)', marginBottom: '2.5rem', lineHeight: '1.8' }}>
               From sourcing to shipment, our focus is on ensuring that every order is handled with precision, professionalism, and attention to detail.
@@ -66,7 +66,7 @@ const CommitmentSection = () => {
               </h3>
               
               <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.5rem', marginTop: '1.5rem' }}>
-                <span style={{ fontSize: '0.9rem', color: 'var(--gray-400)', textTransform: 'uppercase', letterSpacing: '2px' }}>IXE Gateway Pvt Ltd</span>
+                <span style={{ fontSize: '0.9rem', color: 'var(--gray-400)', textTransform: 'uppercase', letterSpacing: '2px' }}>IXE Gateway Pvt. Ltd.</span>
               </div>
             </div>
           </div>

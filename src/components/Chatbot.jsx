@@ -6,7 +6,7 @@ const KNOWLEDGE_BASE = {
   grades: "Our Makhana grades are determined by size (Suta). 7 Suta is the largest and most premium, while 4 Suta is smaller and ideal for food processing.",
   quote: "To get a competitive quote, please use our 'Request a Quote' form on the website or provide your email/WhatsApp number here, and our team will assist you.",
   contact: "You can reach us at +91 9315346713 or email us at info@ixegateway.com. We are also available on WhatsApp!",
-  about: "IXE Gateway Pvt Ltd is a premium global sourcing partner specializing in agricultural exports, particularly Makhana. We ensure quality control, streamlined logistics, and reliable supply chains.",
+  about: "IXE Gateway Pvt. Ltd. is a premium global sourcing partner specializing in agricultural exports, particularly Makhana. We ensure quality control, streamlined logistics, and reliable supply chains.",
   export: "We export globally, managing everything from sourcing at origin to international logistics. Our primary focus is currently on high-quality Makhana exports.",
   greeting: "Hello! How can I assist you with your global sourcing or Makhana requirements today?"
 };

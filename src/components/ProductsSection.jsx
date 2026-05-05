@@ -13,7 +13,8 @@ const makhanaTypes = [
     category: 'Regular',
     color: 'Off white',
     price: 'Most affordable',
-    uses: ['Food processing applications', 'Powder, cereals, and ingredient use', 'Cost-efficient option for large scale production']
+    uses: ['Food processing applications', 'Powder, cereals, and ingredient use', 'Cost-efficient option for large scale production'],
+    image: '/foursuta.png'
   },
   {
     title: '5 Suta Makhana',
@@ -22,7 +23,8 @@ const makhanaTypes = [
     category: 'Good / Commercial',
     color: 'White',
     price: 'Mid Ranged',
-    uses: ['Bulk snack production', 'Private labelling and repackaging', 'Retail and foodservice sectors']
+    uses: ['Bulk snack production', 'Private labelling and repackaging', 'Retail and foodservice sectors'],
+    image: '/fivesuta.png'
   },
   {
     title: '6 Suta Makhana',
@@ -31,7 +33,8 @@ const makhanaTypes = [
     category: 'Premium',
     color: 'Bright White',
     price: 'High',
-    uses: ['Large Sized, uniform makhanas', 'Flavored snacks and branded retail packs', 'Health and wellness brands']
+    uses: ['Large Sized, uniform makhanas', 'Flavored snacks and branded retail packs', 'Health and wellness brands'],
+    image: '/sixsuta.png'
   },
   {
     title: '7 Suta Makhana',
@@ -40,7 +43,8 @@ const makhanaTypes = [
     category: 'Super Premium / Gourmet',
     color: 'Bright White',
     price: 'Premium',
-    uses: ['Extra Large, premium quality', 'Luxury packaging and gifting', 'High-end retail markets']
+    uses: ['Extra Large, premium quality', 'Luxury packaging and gifting', 'High-end retail markets'],
+    image: '/sevensuta.png'
   }
 ];
 
@@ -87,151 +91,180 @@ const ProductsSection = () => {
             <div 
               key={index}
               ref={el => cardsRef.current[index] = el}
-              className="glass-panel product-card"
-              style={{ 
-                padding: '2rem 1.5rem', 
-                backgroundColor: 'var(--navy-800)',
-                border: '1px solid rgba(212, 168, 67, 0.2)',
-                transition: 'all 0.3s ease',
-                position: 'relative',
-                overflow: 'hidden',
-                display: 'flex',
-                flexDirection: 'column'
-              }}
+              className="product-card-container"
+              style={{ perspective: '1500px', height: '100%' }}
             >
-              {/* Top Accent */}
-              <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '4px', background: 'linear-gradient(90deg, var(--gold-300), var(--gold-500))' }} />
+              <div 
+                className="product-card-flipper"
+                style={{ 
+                  position: 'relative',
+                  width: '100%',
+                  height: '100%',
+                  transition: 'transform 0.8s',
+                  transformStyle: 'preserve-3d',
+                }}
+              >
+                {/* Front Face */}
+                <div 
+                  className="product-card-front glass-panel"
+                  style={{ 
+                    padding: '2rem 1.5rem', 
+                    backgroundColor: 'var(--navy-800)',
+                    border: '1px solid rgba(212, 168, 67, 0.2)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    backfaceVisibility: 'hidden',
+                    height: '100%'
+                  }}
+                >
+                  {/* Top Accent */}
+                  <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '4px', background: 'linear-gradient(90deg, var(--gold-300), var(--gold-500))' }} />
 
-              <h3 style={{ fontSize: '1.5rem', color: 'var(--gold-400)', marginBottom: '1.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1rem' }}>
-                {item.title}
-              </h3>
+                  <h3 style={{ fontSize: '1.5rem', color: 'var(--gold-400)', marginBottom: '1.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1rem' }}>
+                    {item.title}
+                  </h3>
 
-              <div style={{ marginBottom: '1.5rem', fontSize: '0.9rem', color: 'var(--gray-200)', flex: 1 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                  <span style={{ color: 'var(--gray-400)' }}>Size:</span> <span>{item.size}</span>
+                  <div style={{ marginBottom: '1.5rem', fontSize: '0.9rem', color: 'var(--gray-200)', flex: 1 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                      <span style={{ color: 'var(--gray-400)' }}>Size:</span> <span>{item.size}</span>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                      <span style={{ color: 'var(--gray-400)' }}>Category:</span> <span>{item.category}</span>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                      <span style={{ color: 'var(--gray-400)' }}>Color:</span> <span>{item.color}</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 style={{ color: 'var(--white)', fontSize: '1rem', marginBottom: '0.8rem' }}>Best For</h4>
+                    <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', padding: 0, margin: 0, listStyle: 'none' }}>
+                      {item.uses.map((use, i) => (
+                        <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--gray-400)' }}>
+                          <CheckCircle2 size={14} color="var(--gold-500)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                          <span>{use}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                  <span style={{ color: 'var(--gray-400)' }}>Category:</span> <span>{item.category}</span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                  <span style={{ color: 'var(--gray-400)' }}>Color:</span> <span>{item.color}</span>
+
+                {/* Back Face */}
+                <div 
+                  className="product-card-back glass-panel"
+                  style={{ 
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'rgba(10, 25, 47, 0.95)',
+                    border: '1px solid rgba(212, 168, 67, 0.35)',
+                    backfaceVisibility: 'hidden',
+                    transform: 'rotateY(180deg)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    padding: 0,
+                    overflow: 'hidden',
+                    boxShadow: '0 0 40px rgba(212, 168, 67, 0.22)',
+                    backdropFilter: 'blur(12px)',
+                  }}
+                >
+                  {/* Top Accent */}
+                  <div style={{ width: '100%', height: '4px', background: 'linear-gradient(90deg, var(--gold-300), var(--gold-500))' }} />
+
+                  {/* Image Header / Top half */}
+                  <div style={{ position: 'relative', width: '100%', height: '52%', overflow: 'hidden', backgroundColor: '#000' }}>
+                    <img 
+                      src={item.image} 
+                      alt={item.title} 
+                      style={{ 
+                        width: '100%', 
+                        height: '100%', 
+                        objectFit: 'cover',
+                        transition: 'transform 0.5s ease',
+                      }} 
+                    />
+                    <div style={{ 
+                      position: 'absolute', 
+                      bottom: 0, 
+                      left: 0, 
+                      width: '100%', 
+                      height: '40%', 
+                      background: 'linear-gradient(to top, rgba(10, 25, 47, 0.95), transparent)' 
+                    }} />
+                  </div>
+
+                  {/* Info Panel / Bottom half */}
+                  <div style={{ 
+                    flex: 1, 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    justifyContent: 'space-between',
+                    padding: '1.2rem 1.5rem', 
+                    backgroundColor: 'rgba(10, 25, 47, 0.95)',
+                  }}>
+                    <div>
+                      <span style={{ 
+                        fontSize: '0.75rem', 
+                        color: 'var(--gold-300)', 
+                        textTransform: 'uppercase', 
+                        letterSpacing: '2px', 
+                        fontWeight: 600,
+                        display: 'block',
+                        marginBottom: '0.4rem'
+                      }}>
+                        Premium Export Quality
+                      </span>
+                      <h4 style={{ fontSize: '1.35rem', color: 'var(--white)', marginBottom: '0.6rem', fontWeight: 600 }}>
+                        {item.title}
+                      </h4>
+                      <p style={{ fontSize: '0.82rem', color: 'var(--gray-300)', lineHeight: '1.4', margin: 0 }}>
+                        {item.size} • {item.category} Grade • {item.color}
+                      </p>
+                      <p style={{ fontSize: '0.82rem', color: 'var(--gray-400)', lineHeight: '1.4', marginTop: '0.5rem', fontStyle: 'italic' }}>
+                        Ideal for: {item.uses[0]} and more.
+                      </p>
+                    </div>
+
+                    <div style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'space-between', 
+                      borderTop: '1px solid rgba(255,255,255,0.08)', 
+                      paddingTop: '0.8rem',
+                      marginTop: '0.4rem'
+                    }}>
+                      <span style={{ color: 'var(--gold-400)', fontSize: '0.85rem', fontWeight: 600 }}>
+                        {item.price}
+                      </span>
+                      <a href="/ixethree/index.html" style={{ 
+                        color: 'var(--white)', 
+                        fontSize: '0.8rem', 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        gap: '0.3rem',
+                        textDecoration: 'none',
+                        transition: 'all 0.3s ease'
+                      }} className="back-link-hover">
+                        View Details <ChevronRight size={14} />
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              <div>
-                <h4 style={{ color: 'var(--white)', fontSize: '1rem', marginBottom: '0.8rem' }}>Best For</h4>
-                <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                  {item.uses.map((use, i) => (
-                    <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--gray-400)' }}>
-                      <CheckCircle2 size={14} color="var(--gold-500)" style={{ flexShrink: 0, marginTop: '2px' }} />
-                      <span>{use}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
             </div>
           ))}
         </div>
-
-        {/* Comparison Table */}
-        <div class="glass-panel grade-overview" style={{ 
-          padding: '3rem', 
-          backgroundColor: 'var(--navy-800)', 
-          border: '1px solid rgba(212, 168, 67, 0.25)', 
-          overflow: 'hidden',
-          position: 'relative',
-          boxShadow: '0 0 60px rgba(212, 168, 67, 0.15)',
-          marginBottom: '3rem'
-        }}>
-          {/* Background Glow Aura */}
-          <div style={{ 
-            position: 'absolute', 
-            top: '50%', 
-            left: '50%', 
-            transform: 'translate(-50%, -50%)', 
-            width: '130%', 
-            height: '130%', 
-            background: 'radial-gradient(circle, rgba(212, 168, 67, 0.12) 0%, transparent 65%)', 
-            pointerEvents: 'none',
-            zIndex: 0
-          }} />
-
-          <h3 style={{ fontSize: '2.2rem', color: 'var(--white)', marginBottom: '2.5rem', textAlign: 'center', position: 'relative', zIndex: 1 }}>Grade Overview</h3>
-
-          
-          <div className="no-scrollbar" style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '650px', position: 'relative', zIndex: 1 }}>
-              <thead>
-                <tr style={{ borderBottom: '2px solid var(--gold-500)', backgroundColor: 'rgba(212, 168, 67, 0.05)' }}>
-                  <th style={{ padding: '1.2rem 1rem', color: 'var(--gold-400)', fontWeight: 600, borderRight: '1px solid rgba(212, 168, 67, 0.2)' }}>Grade</th>
-                  <th style={{ padding: '1.2rem 1rem', color: 'var(--gold-400)', fontWeight: 600, borderRight: '1px solid rgba(212, 168, 67, 0.2)' }}>Size</th>
-                  <th style={{ padding: '1.2rem 1rem', color: 'var(--gold-400)', fontWeight: 600, borderRight: '1px solid rgba(212, 168, 67, 0.2)' }}>Category</th>
-                  <th style={{ padding: '1.2rem 1rem', color: 'var(--gold-400)', fontWeight: 600 }}>Best Applications</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr className="table-row" style={{ borderBottom: '1px solid rgba(212, 168, 67, 0.1)' }}>
-                  <td style={{ padding: '1.2rem 1rem', color: 'var(--white)', borderRight: '1px solid rgba(212, 168, 67, 0.1)', fontWeight: 600 }}>4 Suta</td>
-                  <td style={{ padding: '1.2rem 1rem', color: 'var(--gray-200)', borderRight: '1px solid rgba(212, 168, 67, 0.1)' }}>12–15 mm</td>
-                  <td style={{ padding: '1.2rem 1rem', color: 'var(--gray-200)', borderRight: '1px solid rgba(212, 168, 67, 0.1)' }}>Industrial</td>
-                  <td style={{ padding: '1.2rem 1rem', color: 'var(--gray-200)' }}>Food processing</td>
-                </tr>
-                <tr className="table-row" style={{ borderBottom: '1px solid rgba(212, 168, 67, 0.1)' }}>
-                  <td style={{ padding: '1.2rem 1rem', color: 'var(--white)', borderRight: '1px solid rgba(212, 168, 67, 0.1)', fontWeight: 600 }}>5 Suta</td>
-                  <td style={{ padding: '1.2rem 1rem', color: 'var(--gray-200)', borderRight: '1px solid rgba(212, 168, 67, 0.1)' }}>15–18 mm</td>
-                  <td style={{ padding: '1.2rem 1rem', color: 'var(--gray-200)', borderRight: '1px solid rgba(212, 168, 67, 0.1)' }}>Commercial</td>
-                  <td style={{ padding: '1.2rem 1rem', color: 'var(--gray-200)' }}>Bulk snacks</td>
-                </tr>
-                <tr className="table-row" style={{ borderBottom: '1px solid rgba(212, 168, 67, 0.1)' }}>
-                  <td style={{ padding: '1.2rem 1rem', color: 'var(--white)', borderRight: '1px solid rgba(212, 168, 67, 0.1)', fontWeight: 600 }}>6 Suta</td>
-                  <td style={{ padding: '1.2rem 1rem', color: 'var(--gray-200)', borderRight: '1px solid rgba(212, 168, 67, 0.1)' }}>18–21 mm</td>
-                  <td style={{ padding: '1.2rem 1rem', color: 'var(--gray-200)', borderRight: '1px solid rgba(212, 168, 67, 0.1)' }}>Premium</td>
-                  <td style={{ padding: '1.2rem 1rem', color: 'var(--gray-200)' }}>Retail & flavoured</td>
-                </tr>
-                <tr className="table-row">
-                  <td style={{ padding: '1.2rem 1rem', color: 'var(--white)', borderRight: '1px solid rgba(212, 168, 67, 0.1)', fontWeight: 600 }}>7 Suta</td>
-                  <td style={{ padding: '1.2rem 1rem', color: 'var(--gray-200)', borderRight: '1px solid rgba(212, 168, 67, 0.1)' }}>21+ mm</td>
-                  <td style={{ padding: '1.2rem 1rem', color: 'var(--gray-200)', borderRight: '1px solid rgba(212, 168, 67, 0.1)' }}>Gourmet</td>
-                  <td style={{ padding: '1.2rem 1rem', color: 'var(--gray-200)' }}>Luxury & gifting</td>
-                </tr>
-              </tbody>
-
-            </table>
-          </div>
-        </div>
-
-
       </div>
 
       <style>{`
-        .product-card:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 15px rgba(212, 168, 67, 0.2);
-          border-color: var(--gold-500) !important;
+        .product-card-container:hover .product-card-flipper {
+          transform: rotateY(180deg);
         }
-        .table-row {
-          transition: all 0.3s ease;
+        .product-card-container {
+          cursor: pointer;
         }
-        .table-row:hover {
-          background-color: rgba(212, 168, 67, 0.08);
-          transform: scale(1.005);
-          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        @media(max-width: 768px) {
-          .grade-overview {
-            padding: 2rem 1rem !important;
-          }
-        }
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .no-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-
       `}</style>
     </section>
   );

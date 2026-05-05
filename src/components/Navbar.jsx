@@ -37,7 +37,7 @@ const Navbar = () => {
     }}>
       <div className="container flex-between">
         <a href="#" style={{ display: 'flex', alignItems: 'center' }}>
-          <img src="/ixelogomain.png" alt="IXE Gateway Logo" style={{ height: '65px', objectFit: 'contain' }} />
+          <img src="/ixelogomain.png" alt="IXE Gateway Logo" style={{ height: '80px', objectFit: 'contain' }} />
         </a>
 
         {/* Desktop Nav */}
