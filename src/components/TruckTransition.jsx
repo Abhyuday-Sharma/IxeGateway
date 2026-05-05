@@ -71,7 +71,16 @@ const TruckTransition = () => {
         <div style={{ width: '100%', height: '2px', background: 'linear-gradient(90deg, transparent, var(--gold-500), transparent)', position: 'absolute', bottom: '30%', opacity: 0.5 }} />
 
         {/* Truck SVG Wrapper */}
-        <div ref={truckRef} style={{ position: 'absolute', bottom: 'calc(30% - 95px)', width: 'min(600px, 85vw)', zIndex: 10 }}>
+        <div 
+          ref={truckRef} 
+          className="truck-visual-wrapper"
+          style={{ 
+            position: 'absolute', 
+            bottom: 'calc(30% - var(--truck-offset, 95px))', 
+            width: 'min(600px, 85vw)', 
+            zIndex: 10 
+          }}
+        >
           <img src="/cargotruckfinale.png" alt="Cargo Truck" style={{ width: '100%', height: '100%', objectFit: 'contain', filter: 'drop-shadow(0 10px 10px rgba(0,0,0,0.3))' }} />
         </div>
 
@@ -103,6 +112,11 @@ const TruckTransition = () => {
         @keyframes scrollDownLine {
           0% { transform: translateY(0); opacity: 1; }
           100% { transform: translateY(14px); opacity: 0; }
+        }
+        @media(max-width: 768px) {
+          .truck-visual-wrapper {
+            --truck-offset: 10px;
+          }
         }
       `}</style>
     </div>
